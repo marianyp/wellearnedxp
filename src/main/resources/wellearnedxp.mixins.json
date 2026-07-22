@@ -1,0 +1,27 @@
+{
+  "required": true,
+  "package": "dev.mariany.wellearnedxp.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "BlockItemMixin",
+    "ExperienceOrbMixin",
+    "LootTableTriggerMixin",
+    "RegistryLoadTaskPendingRegistrationMixin",
+    "StatsCounterMixin",
+    "TrialSpawnerStateMixin",
+    "VaultBlockEntityServerMixin",
+    "accessor.AttachedStemBlockAccessor",
+    "accessor.ExperienceOrbAccessor"
+  ],
+  "client": [
+    "ClientPacketListenerMixin",
+    "ExperienceBarMixin",
+    "HudMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}

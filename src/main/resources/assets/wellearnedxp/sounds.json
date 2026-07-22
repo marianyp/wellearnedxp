@@ -1,0 +1,8 @@
+{
+  "engagement_reward.pickup": {
+    "sounds": [
+      "wellearnedxp:engagement_reward/pickup"
+    ],
+    "subtitle": "subtitles.entity.experience_orb.pickup"
+  }
+}

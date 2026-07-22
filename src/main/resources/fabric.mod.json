@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "version": "${mod_version}",
+  "name": "${mod_name}",
+  "description": "${mod_description}",
+  "authors": [
+    "${mod_authors}"
+  ],
+  "contact": {
+    "homepage": "${mod_page_url}",
+    "sources": "${mod_git_url}"
+  },
+  "license": "${mod_license}",
+  "icon": "assets/wellearnedxp/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "dev.mariany.wellearnedxp.WellEarnedXP"
+    ],
+    "client": [
+      "dev.mariany.wellearnedxp.client.WellEarnedXPClient"
+    ],
+    "fabric-datagen": [
+      "dev.mariany.wellearnedxp.WellEarnedXPDataGenerator"
+    ]
+  },
+  "mixins": [
+    "wellearnedxp.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.3",
+    "minecraft": "~26.2",
+    "java": ">=25",
+    "fabric-api": "*"
+  }
+}
