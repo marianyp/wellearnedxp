@@ -1,5 +1,3 @@
-# Well-Earned XP
-
 **Well-Earned XP** introduces new ways to earn experience, allowing players to earn levels for enchanting and repairing.
 Builders, miners, farmers, explorers, and mixed-style players can all earn XP by doing things they already spend time
 doing, without feeling
