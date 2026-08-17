@@ -47,7 +47,7 @@ public class ClientPacketListenerMixin {
             to = Minecraft.getInstance().player;
         }
 
-        if (WellEarnedXPClient.ENGAGEMENT_REWARD_EFFECTS.playPickupSound(clientLevel, from, to)) {
+        if (from != null && WellEarnedXPClient.ENGAGEMENT_REWARD_EFFECTS.playPickupSound(clientLevel, from, to)) {
             return;
         }
 

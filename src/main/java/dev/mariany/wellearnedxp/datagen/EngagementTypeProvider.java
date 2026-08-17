@@ -1,15 +1,15 @@
 package dev.mariany.wellearnedxp.datagen;
 
-import dev.mariany.wellearnedxp.engagement.EngagementTypeData;
-import dev.mariany.wellearnedxp.engagement.EngagementTypes;
+import dev.mariany.wellearnedxp.engagement.type.EngagementTypeData;
+import dev.mariany.wellearnedxp.engagement.type.EngagementTypes;
 import dev.mariany.wellearnedxp.registry.WEXRegistries;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricCodecDataProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.resources.Identifier;
 
-import java.util.function.BiConsumer;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.BiConsumer;
 
 public abstract class EngagementTypeProvider extends FabricCodecDataProvider<EngagementTypeData> {
     public EngagementTypeProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
@@ -21,9 +21,14 @@ public abstract class EngagementTypeProvider extends FabricCodecDataProvider<Eng
             BiConsumer<Identifier, EngagementTypeData> provider,
             HolderLookup.Provider registryLookup
     ) {
-        EngagementTypes.bootstrap((key, data) -> provider.accept(
-                key.identifier(),
-                data
-        ));
+        this.generateEngagementTypes(
+                registryLookup,
+                (key, data) -> provider.accept(key.identifier(), data)
+        );
     }
+
+    public abstract void generateEngagementTypes(
+            HolderLookup.Provider registryLookup,
+            EngagementTypes.Registrar registrar
+    );
 }

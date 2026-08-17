@@ -1,18 +1,13 @@
-package dev.mariany.wellearnedxp.engagement;
+package dev.mariany.wellearnedxp.engagement.type;
 
 import dev.mariany.wellearnedxp.WellEarnedXP;
 import dev.mariany.wellearnedxp.registry.WEXRegistries;
 import dev.mariany.wellearnedxp.stat.WEXStats;
-import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.stats.Stats;
 
 public final class EngagementTypes {
     private EngagementTypes() {
-    }
-
-    public static void bootstrap(BootstrapContext<EngagementTypeData> context) {
-        bootstrap(context::register);
     }
 
     public static void bootstrap(Registrar registrar) {
@@ -31,23 +26,8 @@ public final class EngagementTypes {
         registrar.register(key(engagementType.getName()), EngagementTypeData.of(engagementType));
     }
 
-    public static void register(
-            BootstrapContext<EngagementTypeData> context,
-            EngagementType.Builder<?, ?, ?> builder,
-            KeyFactory keyFactory
-    ) {
-        EngagementType<?> engagementType = builder.build();
-        String name = engagementType.getName();
-        context.register(keyFactory.key(name), EngagementTypeData.of(engagementType));
-    }
-
     private static ResourceKey<EngagementTypeData> key(final String id) {
         return ResourceKey.create(WEXRegistries.ENGAGEMENT_TYPE, WellEarnedXP.id(id));
-    }
-
-    @FunctionalInterface
-    public interface KeyFactory {
-        ResourceKey<EngagementTypeData> key(String id);
     }
 
     @FunctionalInterface

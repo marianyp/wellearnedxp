@@ -1,6 +1,9 @@
 package dev.mariany.wellearnedxp.engagement;
 
 import dev.mariany.wellearnedxp.attachment.WEXAttachmentTypes;
+import dev.mariany.wellearnedxp.engagement.type.EngagementType;
+import dev.mariany.wellearnedxp.engagement.type.EngagementTypeData;
+import dev.mariany.wellearnedxp.engagement.type.EngagementTypeDataLookup;
 import dev.mariany.wellearnedxp.mixin.accessor.ExperienceOrbAccessor;
 import dev.mariany.wellearnedxp.packet.clientbound.PlayerRewardedPayload;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
@@ -79,37 +82,40 @@ public class EngagementManager {
 
     private static void rewardPlayer(ServerPlayer serverPlayer, int minExperience, int maxExperience) {
         int xpReward = Mth.nextInt(serverPlayer.getRandom(), minExperience, maxExperience);
-        spawnReward(serverPlayer, xpReward);
+        spawnExperienceAndNotify(serverPlayer, xpReward);
     }
 
-    private static void spawnReward(ServerPlayer serverPlayer, int amount) {
+    private static void spawnExperienceAndNotify(ServerPlayer serverPlayer, int amount) {
         if (amount <= 0) {
             return;
         }
 
-        spawnReward(serverPlayer.level(), serverPlayer.position(), amount);
+        spawnExperience(serverPlayer, amount);
         notifyAllOfReward(serverPlayer);
     }
 
-    private static void spawnReward(ServerLevel level, Vec3 pos, int amount) {
+    private static void spawnExperience(ServerPlayer serverPlayer, int amount) {
+        ServerLevel serverLevel = serverPlayer.level();
+        Vec3 pos = serverPlayer.position();
+
         while (amount > 0) {
             int experienceValue = Math.min(amount, Short.MAX_VALUE);
 
             amount -= experienceValue;
 
-            if (ExperienceOrbAccessor.wellearnedxp$tryMergeToExisting(level, pos, experienceValue)) {
+            if (ExperienceOrbAccessor.wellearnedxp$tryMergeToExisting(serverLevel, pos, experienceValue)) {
                 continue;
             }
 
-            ExperienceOrb experienceOrb = new ExperienceOrb(level, pos, Vec3.ZERO, experienceValue);
+            ExperienceOrb experienceOrb = new ExperienceOrb(serverLevel, pos, Vec3.ZERO, experienceValue);
 
             ((ExperienceOrbAccessor) experienceOrb).wellearnedxp$setAge(EXPERIENCE_ORB_AGE_TICKS);
 
-            if (experienceOrb instanceof EngagementRewardCandidate engagementRewardCandidate) {
-                engagementRewardCandidate.wellearnedxp$markAsEngagementReward();
+            if (experienceOrb instanceof AwardeeHolder awardeeHolder) {
+                awardeeHolder.wellearnedxp$award(serverPlayer);
             }
 
-            level.addFreshEntity(experienceOrb);
+            serverLevel.addFreshEntity(experienceOrb);
         }
     }
 

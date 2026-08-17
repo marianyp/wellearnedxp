@@ -1,6 +1,6 @@
 package dev.mariany.wellearnedxp.client;
 
-import dev.mariany.wellearnedxp.engagement.EngagementRewardCandidate;
+import dev.mariany.wellearnedxp.engagement.AwardeeHolder;
 import dev.mariany.wellearnedxp.particle.WEXParticleTypes;
 import dev.mariany.wellearnedxp.sound.WEXSoundEvents;
 import net.fabricmc.api.EnvType;
@@ -135,8 +135,8 @@ public class EngagementRewardEffects {
         this.rewardEffectTicks = this.maxRewardEffectTicks;
     }
 
-    public boolean playPickupSound(ClientLevel clientLevel, @Nullable Entity from, @Nullable Entity to) {
-        if (isNotEngagementReward(from) || !WellEarnedXPClient.getConfig().playPickupSound) {
+    public boolean playPickupSound(ClientLevel clientLevel, Entity from, @Nullable Entity to) {
+        if (!WellEarnedXPClient.getConfig().playPickupSound || lacksAwardee(from)) {
             return false;
         }
 
@@ -162,9 +162,8 @@ public class EngagementRewardEffects {
         return true;
     }
 
-    private static boolean isNotEngagementReward(@Nullable Entity entity) {
-        return !(entity instanceof EngagementRewardCandidate engagementRewardCandidate)
-                || !engagementRewardCandidate.wellearnedxp$isEngagementReward();
+    private static boolean lacksAwardee(Entity entity) {
+        return !(entity instanceof AwardeeHolder awardeeHolder) || awardeeHolder.wellearnedxp$lacksAwardee();
     }
 
     public void renderExperienceBarOverlay(ExperienceBar experienceBar, GuiGraphicsExtractor graphics) {

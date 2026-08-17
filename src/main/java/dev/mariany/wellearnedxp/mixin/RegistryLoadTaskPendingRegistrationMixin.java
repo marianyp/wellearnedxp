@@ -4,7 +4,7 @@ import com.google.gson.JsonElement;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.Decoder;
 import com.mojang.serialization.DynamicOps;
-import dev.mariany.wellearnedxp.engagement.EngagementTypeData;
+import dev.mariany.wellearnedxp.engagement.type.EngagementTypeData;
 import net.minecraft.resources.RegistryOps;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.packs.resources.Resource;

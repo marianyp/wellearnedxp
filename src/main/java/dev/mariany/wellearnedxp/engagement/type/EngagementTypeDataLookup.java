@@ -1,4 +1,4 @@
-package dev.mariany.wellearnedxp.engagement;
+package dev.mariany.wellearnedxp.engagement.type;
 
 import dev.mariany.wellearnedxp.registry.WEXDataResources;
 import net.minecraft.resources.ResourceKey;
@@ -27,14 +27,20 @@ public final class EngagementTypeDataLookup {
         return matching(server.getOrThrow(WEXDataResources.ENGAGEMENT_TYPES), stat);
     }
 
-    private static Stream<Entry> matching(Map<ResourceKey<EngagementTypeData>, EngagementTypeData> engagementTypes, Stat<?> stat) {
+    private static Stream<Entry> matching(
+            Map<ResourceKey<EngagementTypeData>, EngagementTypeData> engagementTypes,
+            Stat<?> stat
+    ) {
         return engagementTypes
                 .entrySet()
                 .stream()
                 .flatMap(entry -> toEntry(entry, stat).stream());
     }
 
-    private static Optional<Entry> toEntry(Map.Entry<ResourceKey<EngagementTypeData>, EngagementTypeData> entry, Stat<?> stat) {
+    private static Optional<Entry> toEntry(
+            Map.Entry<ResourceKey<EngagementTypeData>, EngagementTypeData> entry,
+            Stat<?> stat
+    ) {
         return entry
                 .getValue()
                 .engagementType()

@@ -1,4 +1,4 @@
-package dev.mariany.wellearnedxp.engagement;
+package dev.mariany.wellearnedxp.engagement.type;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;

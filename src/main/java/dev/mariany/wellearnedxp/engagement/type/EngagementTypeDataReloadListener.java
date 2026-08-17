@@ -1,4 +1,4 @@
-package dev.mariany.wellearnedxp.engagement;
+package dev.mariany.wellearnedxp.engagement.type;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;

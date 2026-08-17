@@ -1,5 +1,6 @@
 package dev.mariany.wellearnedxp.datagen;
 
+import dev.mariany.wellearnedxp.engagement.type.EngagementTypes;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.core.HolderLookup;
 
@@ -11,6 +12,11 @@ public class WEXEngagementTypeProvider extends EngagementTypeProvider {
             CompletableFuture<HolderLookup.Provider> registriesFuture
     ) {
         super(output, registriesFuture);
+    }
+
+    @Override
+    public void generateEngagementTypes(HolderLookup.Provider registryLookup, EngagementTypes.Registrar registrar) {
+        EngagementTypes.bootstrap(registrar);
     }
 
     @Override

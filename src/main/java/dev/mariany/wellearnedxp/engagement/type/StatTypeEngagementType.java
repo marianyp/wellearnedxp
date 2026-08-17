@@ -1,4 +1,4 @@
-package dev.mariany.wellearnedxp.engagement;
+package dev.mariany.wellearnedxp.engagement.type;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.stats.Stat;

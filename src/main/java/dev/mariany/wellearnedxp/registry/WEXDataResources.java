@@ -1,8 +1,8 @@
 package dev.mariany.wellearnedxp.registry;
 
 import dev.mariany.wellearnedxp.WellEarnedXP;
-import dev.mariany.wellearnedxp.engagement.EngagementTypeData;
-import dev.mariany.wellearnedxp.engagement.EngagementTypeDataReloadListener;
+import dev.mariany.wellearnedxp.engagement.type.EngagementTypeData;
+import dev.mariany.wellearnedxp.engagement.type.EngagementTypeDataReloadListener;
 import net.fabricmc.fabric.api.resource.v1.DataResourceLoader;
 import net.fabricmc.fabric.api.resource.v1.DataResourceStore;
 import net.minecraft.core.HolderLookup;

@@ -2,16 +2,17 @@ package dev.mariany.wellearnedxp.attachment;
 
 import com.mojang.serialization.Codec;
 import dev.mariany.wellearnedxp.WellEarnedXP;
-import dev.mariany.wellearnedxp.engagement.EngagementTypeData;
+import dev.mariany.wellearnedxp.engagement.type.EngagementTypeData;
 import dev.mariany.wellearnedxp.registry.WEXRegistries;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentRegistry;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentSyncPredicate;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentType;
-import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.core.UUIDUtil;
 import net.minecraft.resources.ResourceKey;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 import java.util.function.Consumer;
 
 public final class WEXAttachmentTypes {
@@ -23,11 +24,11 @@ public final class WEXAttachmentTypes {
                     .copyOnDeath()
     );
 
-    public static final AttachmentType<Boolean> ENGAGEMENT_REWARD = register(
-            "engagement_reward",
+    public static final AttachmentType<UUID> AWARDEE = register(
+            "awardee",
             builder -> builder
-                    .persistent(Codec.BOOL)
-                    .syncWith(ByteBufCodecs.BOOL, AttachmentSyncPredicate.all())
+                    .persistent(UUIDUtil.CODEC)
+                    .syncWith(UUIDUtil.STREAM_CODEC, AttachmentSyncPredicate.all())
     );
 
     private WEXAttachmentTypes() {

@@ -1,7 +1,7 @@
 package dev.mariany.wellearnedxp.registry;
 
 import dev.mariany.wellearnedxp.WellEarnedXP;
-import dev.mariany.wellearnedxp.engagement.EngagementTypeData;
+import dev.mariany.wellearnedxp.engagement.type.EngagementTypeData;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 
