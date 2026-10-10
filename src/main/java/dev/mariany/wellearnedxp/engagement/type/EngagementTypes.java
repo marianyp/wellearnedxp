@@ -12,12 +12,12 @@ public final class EngagementTypes {
 
     public static void bootstrap(Registrar registrar) {
         register(registrar, CustomStatEngagementType.builder(Stats.RAID_WIN).experience(55));
-        register(registrar, StatTypeEngagementType.builder(Stats.BLOCK_MINED).experience(0, 7).interval(32));
+        register(registrar, StatTypeEngagementType.builder(Stats.BLOCK_MINED).experience(0, 6).interval(25));
         register(registrar, StatTypeEngagementType.builder(Stats.ITEM_BROKEN).experience(16));
 
-        register(registrar, CustomStatEngagementType.builder(WEXStats.BLOCKS_PLACED).experience(0, 7).interval(32));
-        register(registrar, CustomStatEngagementType.builder(WEXStats.CROPS_HARVESTED).experience(0, 2));
-        register(registrar, CustomStatEngagementType.builder(WEXStats.DIFFERENT_ITEMS_CRAFTED).experience(1));
+        register(registrar, CustomStatEngagementType.builder(WEXStats.BLOCKS_PLACED).experience(0, 6).interval(25));
+        register(registrar, CustomStatEngagementType.builder(WEXStats.CROPS_HARVESTED).experience(0, 4));
+        register(registrar, CustomStatEngagementType.builder(WEXStats.DIFFERENT_ITEMS_CRAFTED).experience(4));
         register(registrar, CustomStatEngagementType.builder(WEXStats.LOOT_DISCOVERED).experience(7, 16));
     }
 
