@@ -3,6 +3,8 @@ Builders, miners, farmers, explorers, and mixed-style players can all earn XP by
 doing, without feeling
 pushed toward XP farms or mob grinders.
 
+You can also try out [Well-Discovered XP](https://www.curseforge.com/minecraft/mc-mods/welldiscoveredxp) for even more ways to earn experience!
+
 ![earn xp from... building, mining, looting, and more](https://i.imgur.com/BPn8uzY.png)
 
 ## ✨ New Ways to Earn XP
